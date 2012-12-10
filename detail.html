@@ -10,95 +10,53 @@
 
     <!-- Le styles -->
     <link href="./libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <style type="text/css">
-        /* Portrait tablet to landscape and desktop */
-       
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-
     <link href="./libs/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
   </head>
-
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+
+	<div class="navbar navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
           <a class="brand" href="#">Net-o-peer</a>
-          
           <div class="nav-collapse collapse">
             <ul class="nav">
-               <li class="active"><a href="./index.html">Nejnovější videa</a></li>
+              <li class="active"><a href="./index.html">Nejnovější videa</a></li>
               <li class=""><a href="#">Oblíbená videa</a></li>
-              
             </ul>
-         
-
+          </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
     <div class='container'>
-
-   <div class="row">
+     <div class="row">
                     <!-- leva strana detailu videa -->
-                     <div class="span2">
-                     </div>
-
-                      <div class="span7">
-                        <h2> Název videa  <small>20.12.2012 v 12:00</small> <h2>
-                     </div> 
-                      
+                     <div class="span2"></div>
+                      <!-- titulek je automaticky vlozen javascriptem -->
+                      <div class="span7"> <h2 id="title"><h2> </div> 
                       <div class="span2">                          
                      </div>
-    </div>
-
-
-   <div class="row">
-                    <!-- leva strana detailu videa -->
-                     <div class="span2" style="padding-top:80px">
-                            <img src="holder.js/200x150" class="img-circle">
-                     </div>
+     </div>
+     <div class="row">
+                     <!-- predchozi videa button -->
+                     <div class="span2" style="padding-top:80px"><a href=""><img src="./imgs/previous-button.png" class="img-circle previous"></a></div>
                         
                       <!-- horni lista nad videem -->   
-                    
-
                       <div class="span7">
-
                           <div class="row" style="padding-bottom: 5px;">
                           <div class="span3"> <button class="btn-success" style="height:40px">Přidat do oblíbených</button> </div> 
                           <div class="span2"> center </div>
                           <div class="span2" style="text-align: right;"> <button class="btn-danger" style="height:40px">Smazat</button> </div>
-                          
-                           </div>
-
-
-                        <video id="player_a" class="projekktor" poster="./media/snb1-big.jpg" title="this is Projekktor" width="100%"  height="385" controls>
-                            <source src="./media/intro.ogv" type="video/ogg" />
-                            <source src="./media/intro.mp4" type="video/mp4" />
-                            <source src="./media/intro.webm" type="video/webm" />
-                        </video>
-
-                            <script type="text/javascript">
-                             $(document).ready(function() {
-                              projekktor(
-                                        '#player_a', // destination-container-selector-fuzz a la jQuery
-                                        {}, // an empty Projekktor-ccofig-object
-                                        function(player) { // "onready" callback -
-                                            $('#projekktorver').html( player.getPlayerVer() );
-                                        }
-                              );
-                            });
-                            </script>
+                      </div>
+                      	<class id="video_emb">
+                        </class>
 
                      <!-- spodni lista -->   
                             <div class="row">
@@ -111,17 +69,82 @@
                                  <div class="span3"> center </div>
                                  <div class="span2" style='text-align:right; width:100px;'><img  src='http://blog.marketingzone.com/wp-content/uploads/2012/06/FiveStars.jpg'></div>
                             </div>
+                              <!-- spodni lista -->   
+                            <div class="row">
+                                 <div class="span7"> 
+                                      <input type="textarea" class="span7" ></input>
+                                </div>
+                             
+                            </div>
                      </div> 
-                      
-                       <div class="span2" style="padding-top:80px">
-                            <img src="holder.js/200x150" class="img-circle">                          
-                     </div>
-    </div>
-    </div> <!-- /container -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="./libs/projekktor/projekktor-1.2.04r140.min"></script>
+                     
+                       <!-- dalsi videa button -->
+                       <div class="span2" style="padding-top:80px"><a href=""><img src="./imgs/next-button.png" class="img-circle next"></a></div>
+     </div>
+     
+     <footer>
+     <p>Vyrobil Honza a Pepa Studio Jabloň </p>
+     </footer>
+     </div> <!-- /container -->
+ 
+
+
+   <script type="text/javascript">
+		    // nahrani thumbnailu do divu
+		       $(document).ready(function() {
+		          console.log("lalala");
+		          p0 = '<video id="player_a" class="projekktor" poster="./media/snb1-big.jpg" title="this is Projekktor" width="100%"  height="385" controls>\
+                  <source src="./media/intro.ogv" type="video/ogg" /> \
+                  <source src="./media/intro.mp4" type="video/mp4" /> \
+             	  </video>';
+		    
+                  p1 = '<video id="player_a" class="projekktor" poster="./media/snb2-big.jpg" title="this is Projekktor" width="100%"  height="385" controls>\
+                      <source src="./media/intro.ogv" type="video/ogg" /> \
+                      <source src="./media/intro.mp4" type="video/mp4" /> \
+                 	  </video>';
+                 	  
+                  p2 = '<video id="player_a" class="projekktor" poster="./media/snb3-big.jpg" title="this is Projekktor" width="100%"  height="385" controls>\
+                          <source src="./media/intro.ogv" type="video/ogg" /> \
+                          <source src="./media/intro.mp4" type="video/mp4" /> \
+                     	  </video>';
+		        
+                 
+                  $("#video_emb").html(p0); // inicializuj prehravac
+		          
+		          var titles = [];
+		          titles[0] = ["Kamera Ígl: <small>Neděle 20.12.2012 / 11:45 </small> ", p0];			        
+		          titles[1] = ["Kamera Papouch: <small>Neděle 20.12.2012 / 12:00 </small> ", p1];
+		          titles[2] = ["Kamera Gat Ya: <small>Neděle 20.12.2012 / 12:15 </small> ", p2];
+		          var modulo = titles.length;
+		          var title_id = 0;
+		          // nastav nejaky titulek
+		          $("#title").html(titles[title_id][0]); 
+		          
+		          // uzivatel chce dalsi video
+		          $(".next").click(function(event){
+		        	  title_id = (title_id + 1) % modulo;
+		        	  $("#title").html(titles[title_id][0]);  
+		        	  $("#video_emb").html(titles[title_id][1]); // inicializuj prehravac
+		        	  event.preventDefault();
+
+		          }) 
+		          
+		          // uzivatel chce dalsi video
+		          $(".previous").click(function(event){
+		        	  title_id = (title_id - 1) % modulo;
+		        	  if(title_id < 0){ title_id = -title_id;}
+		        	  $("#title").html(titles[title_id][0]);   
+		        	  $("#video_emb").html(titles[title_id][1]); // inicializuj prehravac
+		        	  event.preventDefault();
+
+		          })	 
+		        });
+		    </script>
+
     <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
     <script src="./holder.js"></script>
+
+
 
   </body>
 </html>
