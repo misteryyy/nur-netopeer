@@ -10,10 +10,12 @@
 
     <!-- Le styles -->
     <link href="./libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+     <link href="./libs/bootstrap/css/bootstrap-tagmanager.css" rel="stylesheet" media="screen">
     <link href="./libs/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
   </head>
   <body>
+
 
 
 	<div class="navbar navbar-inverse">
@@ -72,9 +74,12 @@
                               <!-- spodni lista -->   
                             <div class="row">
                                  <div class="span7"> 
-                                      <input type="textarea" class="span7" ></input>
-                                </div>
-                             
+                                 	  <input type="text" value="napiste tag" name="tags" placeholder="Tags" class="tagManager"/>
+                                 	  
+                                 	      <form class="form-inline">
+									    	<textarea rows="4" class="span7">Popiste co je na videu.</textarea> 
+									    </form>
+                                </div>      
                             </div>
                      </div> 
                      
@@ -92,7 +97,12 @@
    <script type="text/javascript">
 		    // nahrani thumbnailu do divu
 		       $(document).ready(function() {
-		          console.log("lalala");
+		    	   
+		    	   // inicializace tagu
+		    	   jQuery(".tagManager").tagsManager();
+		    	   
+		    	   
+		          
 		          p0 = '<video id="player_a" class="projekktor" poster="./media/snb1-big.jpg" title="this is Projekktor" width="100%"  height="385" controls>\
                   <source src="./media/intro.ogv" type="video/ogg" /> \
                   <source src="./media/intro.mp4" type="video/mp4" /> \
@@ -108,15 +118,39 @@
                           <source src="./media/intro.mp4" type="video/mp4" /> \
                      	  </video>';
 		        
+                     	   
+               		  // ziskani hodnot z getu
+               		  var GET = {};
+               		   document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+               		       function decode(s) {
+               		           return decodeURIComponent(s.split("+").join(" "));
+               		       }
+               		       GET[decode(arguments[1])] = decode(arguments[2]);
+               		   });
+
+               		if(GET["id"] == 1){
+               		    $("#video_emb").html(p1); // inicializuj prehravac
+               		  var title_id = 1;
+               		} 
+               		  else if (GET["id"] == 2){
+		    	 	  $("#video_emb").html(p2); // inicializuj prehravac
+		    	 	  var title_id = 2;
+		    		} else {
+		    	       $("#video_emb").html(p0); // inicializuj prehravac
+		    	       var title_id = 0;
+		    		} 
+               	
+                     	  
+                     	  
+                     	  
                  
-                  $("#video_emb").html(p0); // inicializuj prehravac
 		          
 		          var titles = [];
 		          titles[0] = ["Kamera Ígl: <small>Neděle 20.12.2012 / 11:45 </small> ", p0];			        
 		          titles[1] = ["Kamera Papouch: <small>Neděle 20.12.2012 / 12:00 </small> ", p1];
 		          titles[2] = ["Kamera Gat Ya: <small>Neděle 20.12.2012 / 12:15 </small> ", p2];
 		          var modulo = titles.length;
-		          var title_id = 0;
+		        
 		          // nastav nejaky titulek
 		          $("#title").html(titles[title_id][0]); 
 		          
@@ -142,6 +176,7 @@
 		    </script>
 
     <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
+     <script src="./libs/bootstrap/js/bootstrap-tagmanager.js"></script>
     <script src="./holder.js"></script>
 
 

@@ -76,20 +76,28 @@
     </div>
     <hr>
 		   <script type="text/javascript">
+		
 		    // nahrani thumbnailu do divu
 		       $(document).ready(function() {
 		          console.log("lalala");
-		          var thumbs = $(".thumbnails-snb");
-                                 
+		          var thumbs = $(".thumbnails-snb");      
                  
 		          // nahodne thumbnaily
 		          var th01 ='<div class="span2"><a href="./detail.html"><img class="img-polaroid" src="./media/snb1.jpg"></a><p><a class="btn" href="#">Sleduj video &raquo;</a></p></div><!-- /.span4 -->'   
+		          var th02 ='<div class="span2"><a href="./detail.html?id=1"><img class="img-polaroid" src="./media/snb2.jpg"></a><p><a class="btn" href="#">Sleduj video &raquo;</a></p></div><!-- /.span4 -->'   
+		          var th03 ='<div class="span2"><a href="./detail.html?id=2"><img class="img-polaroid" src="./media/snb3.jpg"></a><p><a class="btn" href="#">Sleduj video &raquo;</a></p></div><!-- /.span4 -->'   
+		   		  var array ={};
+		          array[0] = th01; 
+		          array[1] = th02; 
+		          array[2] = th03; 
+		          
+		          //,th02,th03};      
 		          // projdi vsechny thumbs a pridej nahodna videa
 		          thumbs.each(function (i) {
-					       console.log(this);
 					       // 6 nahledu v kazdem slideru
 				           for(var l = 0; l < 6; l++){
-				        	 $(this).append(th01);
+				        	   var index = l % 3;
+				        	 $(this).append(array[index]);
 					        }   
 		     		 });
 		        });
@@ -97,6 +105,8 @@
     </div> <!-- /container -->
  
     <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
+    
+   
     <script src="./holder.js"></script>
   </body>
 </html>
