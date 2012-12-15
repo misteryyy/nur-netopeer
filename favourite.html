@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Oblíbená</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Jan Remeš, Josef Kortan">
@@ -12,6 +12,9 @@
     <link href="./libs/bootstrap/css/bootstrap.min.css" rel="stylesheet"  media="screen">
     <link href="./libs/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  
+  
+  
   </head>
   <body>
 
@@ -26,9 +29,9 @@
           <a class="brand" href="#">Net-o-peer</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="./index.html">Nejnovější videa</a></li>
-              <li class=""><a href="./favourite.html">Oblíbená videa</a></li>
-                <li class=""><a href="./search.html">Vyhledávání</a></li>
+              <li class=><a href="./index.html">Nejnovější videa</a></li>
+              <li class="active" ><a href="./favourite.html">Oblíbená videa</a></li>
+              <li class=""><a href="./search.html">Vyhledávání</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -39,47 +42,19 @@
     <div class="container">
 
       <!-- Nejnovější -->
-    <h1> Pondělí 20.1.2013 <h1>
-    <div id="myCarousel" class="carousel slide">
-          <!-- Carousel items -->
-          <div class="carousel-inner">
-		          <div class="active item"><div class="row thumbnails-snb"></div></div>
-		           <div class="item"><div class="row thumbnails-snb"></div></div>
-         </div>
-          <!-- Carousel nav -->
-          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    <h1> Oblíbená videa <h1>
+ 	<h2> Pondělí 20.1.2013 <h2>
+		   <div class="active item"><div class="row thumbnails-snb"></div></div>
+
+         
     </div>
     <hr>
-    <h1> Neděle 19.1.2013<h1>
-    <div id="myCarousel" class="carousel slide">
-          <!-- Carousel items -->
-          <div class="carousel-inner">
-		          <div class="active item"><div class="row thumbnails-snb"></div></div>
-		           <div class="item"><div class="row thumbnails-snb"></div></div>
-         </div>
-          <!-- Carousel nav -->
-          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div>
-    <hr>
-    <h1> Sobota 18.1.2013 <h1>
-    <div id="myCarousel" class="carousel slide">
-          <!-- Carousel items -->
-          <div class="carousel-inner">
-		          <div class="active item"><div class="row thumbnails-snb"></div></div>
-		           <div class="item"><div class="row thumbnails-snb"></div></div>
-         </div>
-          <!-- Carousel nav -->
-          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div>
-    <hr>
-		   <script type="text/javascript">
+   
+   <script type="text/javascript">
 		
 		    // nahrani thumbnailu do divu
 		       $(document).ready(function() {
-		          console.log("lalala");
+		    
 		          var thumbs = $(".thumbnails-snb");      
                  
 		          // nahodne thumbnaily
@@ -95,9 +70,9 @@
 		          // projdi vsechny thumbs a pridej nahodna videa
 		          thumbs.each(function (i) {
 					       // 6 nahledu v kazdem slideru
-				           for(var l = 0; l < 6; l++){
+				           for(var l = 0; l < 1; l++){
 				        	   var index = l % 3;
-				        	 $(this).append(array[index]);
+				        	 $(this).append(array[2]);
 					        }   
 		     		 });
 		        });

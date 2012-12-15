@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Net-o-peer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Jan Remeš, Josef Kortan">
@@ -29,8 +29,9 @@
           <a class="brand" href="#">Net-o-peer</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="./index.html">Nejnovější videa</a></li>
-              <li class=""><a href="#">Oblíbená videa</a></li>
+          	 <li class=""><a href="./index.html">Nejnovější videa</a></li>
+              <li class=""><a href="./favourite.html">Oblíbená videa</a></li>
+                <li class=""><a href="./search.html">Vyhledávání</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -42,7 +43,7 @@
                     <!-- leva strana detailu videa -->
                      <div class="span2"></div>
                       <!-- titulek je automaticky vlozen javascriptem -->
-                      <div class="span7"> <h2 id="title"><h2> </div> 
+                      <div class="span7"><h2 id="title"><h2> </div> 
                       <div class="span2">                          
                      </div>
      </div>
@@ -53,9 +54,9 @@
                       <!-- horni lista nad videem -->   
                       <div class="span7">
                           <div class="row" style="padding-bottom: 5px;">
-                          <div class="span3"> <button class="btn-success" style="height:40px">Přidat do oblíbených</button> </div> 
-                          <div class="span2"> center </div>
-                          <div class="span2" style="text-align: right;"> <button class="btn-danger" style="height:40px">Smazat</button> </div>
+                          <div class="span3"> <button  class="btn btn-success btn-fav" data-toggle="button" style="height:40px">Přidat mezi oblíbené</button> </div> 
+                          <div class="span2"> </div>
+                          <div class="span2" style="text-align: right;"> <button class="btn btn-danger btn-del" style="height:40px">Smazat</button> </div>   
                       </div>
                       	<class id="video_emb">
                         </class>
@@ -68,28 +69,24 @@
                                          <img src='http://icons.iconarchive.com/icons/designbolts/minimalist-social/32/Twitter-2-icon.png'>
                                          <img src='http://icons.iconarchive.com/icons/designbolts/minimalist-social/32/Vimeo-icon.png'>
                                 </div>
-                                 <div class="span3"> center </div>
+                                 <div class="span3"> </div>
                                  <div class="span2" style='text-align:right; width:100px;'><img  src='http://blog.marketingzone.com/wp-content/uploads/2012/06/FiveStars.jpg'></div>
                             </div>
                               <!-- spodni lista -->   
                             <div class="row">
                                  <div class="span7"> 
-                                 	  <input type="text" value="napiste tag" name="tags" placeholder="Tags" class="tagManager"/>
+                                 	  <input type="text" name="tags" placeholder="Vložte štítek" class="tagManager"/>
                                  	  
                                  	      <form class="form-inline">
-									    	<textarea rows="4" class="span7">Popiste co je na videu.</textarea> 
+									    	<textarea rows="4" class="span7"  placeholder="Popište co je na videu."></textarea> 
 									    </form>
                                 </div>      
                             </div>
                      </div> 
-                     
+                   
                        <!-- dalsi videa button -->
                        <div class="span2" style="padding-top:80px"><a href=""><img src="./imgs/next-button.png" class="img-circle next"></a></div>
      </div>
-     
-     <footer>
-     <p>Vyrobil Honza a Pepa Studio Jabloň </p>
-     </footer>
      </div> <!-- /container -->
  
 
@@ -101,8 +98,22 @@
 		    	   // inicializace tagu
 		    	   jQuery(".tagManager").tagsManager();
 		    	   
-		    	   
-		          
+		    	   // oblibene button
+					$(".btn-fav").click(function(event){
+								if($(".btn-fav").hasClass("active")){
+									$(".btn-fav").html("Přidat mezi oblíbené");
+									$(".btn-fav").removeClass("btn-danger");
+									$(".btn-fav").addClass("btn-success");
+									
+								} else {
+									$(".btn-fav").html("Odebrat z oblíbených");
+									$(".btn-fav").removeClass("btn-success");
+									$(".btn-fav").addClass("btn-danger");
+									
+								}
+							}
+					);
+						   
 		          p0 = '<video id="player_a" class="projekktor" poster="./media/snb1-big.jpg" title="this is Projekktor" width="100%"  height="385" controls>\
                   <source src="./media/intro.ogv" type="video/ogg" /> \
                   <source src="./media/intro.mp4" type="video/mp4" /> \
@@ -139,11 +150,7 @@
 		    	       $("#video_emb").html(p0); // inicializuj prehravac
 		    	       var title_id = 0;
 		    		} 
-               	
-                     	  
-                     	  
-                     	  
-                 
+            
 		          
 		          var titles = [];
 		          titles[0] = ["Kamera Ígl: <small>Neděle 20.12.2012 / 11:45 </small> ", p0];			        
